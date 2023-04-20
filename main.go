@@ -7,7 +7,6 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"log"
-	"net/http"
 )
 
 func init() {
@@ -25,7 +24,7 @@ func main() {
 	app.Use(logger.New())
 	// use cors to allow all origins
 	app.Use(cors.New(cors.Config{
-		AllowOrigins:     "*",
+		AllowOrigins:     "localhost:3000",
 		AllowHeaders:     "Origin, Content-Type, Accept",
 		AllowMethods:     "GET, POST, PATCH, DELETE, OPTIONS",
 		AllowCredentials: true,
@@ -44,7 +43,7 @@ func main() {
 	})
 	// define routes
 	api.Get("/healthchecker", func(c *fiber.Ctx) error {
-		return c.Status(http.StatusOK).JSON(fiber.Map{
+		return c.Status(fiber.StatusOK).JSON(fiber.Map{
 			"message": "Welcome to Golang, Fiber, SQLite, and GORM",
 			"status":  "success",
 		})
