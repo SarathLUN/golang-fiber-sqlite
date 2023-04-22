@@ -1,0 +1,1 @@
+// javascript specifically for home page

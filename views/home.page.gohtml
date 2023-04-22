@@ -1,0 +1,22 @@
+{{ template "base" .}}
+
+{{define "page-style"}}
+    <link rel="stylesheet" href="/static/css/home.css">
+{{end}}
+
+{{ define "content"}}
+    <div class="container">
+        <h1>Home page content</h1>
+        <p>
+            {{.Description}}
+        </p>
+        <form action="/" method="post" >
+            <input type="file" name="documents">
+         <button id="btn" class="btn btn-success">click me</button>
+        </form>
+    </div>
+{{end}}
+
+{{ define "page-js"}}
+    <script src="/static/js/home.js"></script>
+{{end}}
