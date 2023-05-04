@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/SarathLUN/golang-fiber-sqlite/controllers"
 	"github.com/SarathLUN/golang-fiber-sqlite/initializers"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html" // add engine
@@ -21,14 +22,8 @@ func main() {
 	})
 	// serve static files
 	web.Static("/static", "./public")
-	// define routes to load home page
-	web.Get("/", func(c *fiber.Ctx) error {
-		// Render a template named 'home.page.html' with content
-		return c.Render("home.page", fiber.Map{
-			"Title":       "Home",
-			"Description": "This is home page",
-		})
-	})
+	// define routes to load home page from controllers package
+	web.Get("/", controllers.LoadHomePage)
 
 	// start server
 	err := web.Listen("localhost:3000")
